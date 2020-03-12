@@ -1,0 +1,7 @@
+13:46:33,045 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 19.0.0.Beta3 (WildFly Core 11.0.0.Beta10) started in 19593ms - Started 316 of 582 services (374 services are lazy, passive or on-demand)
+14:06:32,408 INFO  [org.jboss.as.repository] (management-handler-thread - 1) WFLYDR0001: Content added at location D:\GeekBrains\JavaEE\wildfly-19.0.0.Beta3\standalone\data\content\d3\7a407450c4607d5448bdea3223263ff10524ae\content
+14:06:32,434 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "GbJavaEeWebApp.war" (runtime-name: "GbJavaEeWebApp.war")
+14:06:34,368 INFO  [org.infinispan.factories.GlobalComponentRegistry] (MSC service thread 1-3) ISPN000128: Infinispan version: Infinispan 'Infinity Minus ONE +2' 9.4.18.Final
+14:06:34,777 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 78) WFLYCLINF0002: Started client-mappings cache from ejb container
+14:06:34,916 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 78) WFLYUT0021: Registered web context: '/GbJavaEeWebApp' for server 'default-server'
+14:06:34,994 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "GbJavaEeWebApp.war" (runtime-name : "GbJavaEeWebApp.war")
