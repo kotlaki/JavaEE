@@ -6,18 +6,24 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>FirstServlet</servlet-name>
-    <servlet-class>ru.kurganov.FirstServlet</servlet-class>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>ru.kurganov.ProductServlet</servlet-class>
   </servlet>
-  
+
   <servlet-mapping>
-    <servlet-name>FirstServlet</servlet-name>
-    <url-pattern>/firstservlet</url-pattern>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>catalog/product</url-pattern>
   </servlet-mapping>
 
-<!--  <error-page>-->
-<!--    <error-code>404</error-code>-->
-<!--    <location>/index.jsp</location>-->
-<!--  </error-page>-->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/404.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/403.jsp</location>
+  </error-page>
+
 
 </web-app>
