@@ -19,14 +19,15 @@
         <th>Name</th>
         <th>Description</th>
     </tr>
+<%--    перебераем List и выводим его содержание--%>
     <c:forEach items="${products}" var = "prod">
             <td>${prod.id}</td>
-            <c:url value="catalog/product" var="prodUrl"/>
+<%--        делаем ссылку с передачей параметра name--%>
+            <c:url value="catalog/product?name=${prod.name}&desc=${prod.description}" var="prodUrl"/>
             <td>  <a href="${prodUrl}">${prod.name}</a><br></td>
             <td>${prod.description}</td>
         </tr>
     </c:forEach>
 </table>
-<%--<a href="./catalog/product">Товар</a><br>--%>
 </body>
 </html>

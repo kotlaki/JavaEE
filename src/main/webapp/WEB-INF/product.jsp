@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.
   User: voland
   Date: 31.03.2020
@@ -12,7 +12,10 @@
     <title>Интернет магазин - Товар</title>
 </head>
 <body>
-<h2>Товар</h2>
-
+<%--принимаем из линка параметры для дальнейшего использования--%>
+<%String name = request.getParameter("name");%>
+<%String desc = request.getParameter("desc");%>
+<h2>Товар <%=name%></h2>
+<h3><%=desc%></h3>
 </body>
 </html>

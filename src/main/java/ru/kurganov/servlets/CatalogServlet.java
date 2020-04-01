@@ -23,7 +23,7 @@ public class CatalogServlet extends HttpServlet {
         logger.info("doGet CatalogServlet");
 
         List<Products> products = new ArrayList<>();
-        products.add(new Products(1, "Product1", "Desc1"));
+        products.add(new Products(1, "Product1", "Описание"));
         products.add(new Products(2, "Product2", "Desc2"));
         products.add(new Products(3, "Product3", "Desc3"));
         products.add(new Products(4, "Product4", "Desc4"));
