@@ -23,7 +23,8 @@ public class HttpFilter implements Filter {
         servletResponse.getWriter().println("<a href=\"/GbJavaEeWebApp/index.jsp\">Главная</a>   " +
                 "<a href=\"/GbJavaEeWebApp/catalog\">Каталог товаров</a>   " +
                 "<a href=\"/GbJavaEeWebApp/cart\">Корзина</a>   " +
-                "<a href=\"/GbJavaEeWebApp/order\">Оформление заказа</a>");
+                "<a href=\"/GbJavaEeWebApp/order\">Оформление заказа</a> " +
+                "<a href=\"/GbJavaEeWebApp/company\">О компании</a>");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

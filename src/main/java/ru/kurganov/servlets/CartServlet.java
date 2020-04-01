@@ -1,4 +1,4 @@
-package ru.kurganov;
+package ru.kurganov.servlets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "catalog", urlPatterns = "/catalog")
-public class CatalogServlet extends HttpServlet {
+@WebServlet(name = "CartServlet", urlPatterns = "/cart")
+public class CartServlet extends HttpServlet {
 
-    private Logger logger = LoggerFactory.getLogger(CatalogServlet.class);
+    private Logger logger = LoggerFactory.getLogger(CartServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("doGet CatalogServlet");
-        resp.getWriter().println("<h2>Каталог товаров</h2>");
-        resp.getWriter().println("<a href=./catalog/product>Товар</a><br>");
+        logger.info("doGet CartServlet");
+        getServletContext().getRequestDispatcher("/WEB-INF/cart.jsp").include(req, resp);
     }
 }

@@ -1,4 +1,4 @@
-package ru.kurganov;
+package ru.kurganov.servlets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,14 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "order", urlPatterns = "/order")
-public class OrderServlet extends HttpServlet {
+@WebServlet(name = "MainServlet", urlPatterns = "/main")
+public class MainServlet extends HttpServlet {
 
-    private Logger logger = LoggerFactory.getLogger(OrderServlet.class);
+    private Logger logger = LoggerFactory.getLogger(MainServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       logger.info("doGet OrderServlet");
-       resp.getWriter().println("<h2>Оформление заказа</h2>");
+        logger.info("doGet MainServlet");
+        getServletContext().getRequestDispatcher("index.jsp").include(req, resp);
     }
+
 }

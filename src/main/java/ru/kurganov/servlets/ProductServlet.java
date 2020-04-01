@@ -1,14 +1,16 @@
-package ru.kurganov;
+package ru.kurganov.servlets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.kurganov.Products;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 //@WebServlet(name = "product", urlPatterns = "catalog/product")
 public class ProductServlet extends HttpServlet {
@@ -17,7 +19,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       logger.info("doGet ProductServlet");
-       resp.getWriter().println("<h2>Товар</h2>");
+        logger.info("doGet ProductServlet");
+        getServletContext().getRequestDispatcher("/WEB-INF/product.jsp").include(req, resp);
     }
 }

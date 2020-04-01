@@ -7,7 +7,7 @@
 
   <servlet>
     <servlet-name>ProductServlet</servlet-name>
-    <servlet-class>ru.kurganov.ProductServlet</servlet-class>
+    <servlet-class>ru.kurganov.servlets.ProductServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -17,12 +17,12 @@
 
   <error-page>
     <error-code>404</error-code>
-    <location>/WEB-INF/404.jsp</location>
+    <location>/WEB-INF/errors/404.jsp</location>
   </error-page>
 
   <error-page>
     <error-code>403</error-code>
-    <location>/WEB-INF/403.jsp</location>
+    <location>/WEB-INF/errors/403.jsp</location>
   </error-page>
 
 
