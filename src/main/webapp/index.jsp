@@ -23,5 +23,23 @@
 
 <h2>Главная страница</h2>
 
+<ul class="list-group">
+    <li class="list-group-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Главная</a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/catalog">Каталог товаров</a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="#">Корзина</a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="#">Оформление заказа</a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="#">О компании</a>
+    </li>
+</ul>
+
 </body>
 </html>
