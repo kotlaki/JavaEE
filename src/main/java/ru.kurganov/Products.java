@@ -1,20 +1,24 @@
 package ru.kurganov;
 
+import java.math.BigDecimal;
+
 public class Products {
-    private int id;
+    private long id;
     private String name;
     private String description;
+    private BigDecimal price;
 
     public Products() {
     }
 
-    public Products(int id, String name, String description) {
+    public Products(long id, String name, String description, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.price = price;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -24,5 +28,9 @@ public class Products {
 
     public String getDescription() {
         return description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
     }
 }

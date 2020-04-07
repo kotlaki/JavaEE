@@ -18,14 +18,9 @@ public class HttpFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         // задаем кодировку глобально на все страницы
         servletResponse.setContentType("text/html; charset=UTF-8");
-        servletResponse.setCharacterEncoding("UTF-8");
-        // тут как правило делают проверку авторизации с последующим редиректом
-        servletResponse.getWriter().println("<a href=\"/GbJavaEeWebApp/index.jsp\">Главная</a>   " +
-                "<a href=\"/GbJavaEeWebApp/catalog\">Каталог товаров</a>   " +
-                "<a href=\"/GbJavaEeWebApp/cart\">Корзина</a>   " +
-                "<a href=\"/GbJavaEeWebApp/order\">Оформление заказа</a> " +
-                "<a href=\"/GbJavaEeWebApp/company\">О компании</a>");
-        filterChain.doFilter(servletRequest, servletResponse);
+//        servletResponse.getWriter().println("<h1>Заголовок из фильтра</h1>");
+        filterChain.doFilter(servletRequest,servletResponse);
+//        servletResponse.getWriter().println("<h1>Подвал из фильтра</h1>");
     }
 
     @Override

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,15 +24,15 @@ public class CatalogServlet extends HttpServlet {
         logger.info("doGet CatalogServlet");
 
         List<Products> products = new ArrayList<>();
-        products.add(new Products(1, "Product1", "Описание"));
-        products.add(new Products(2, "Product2", "Desc2"));
-        products.add(new Products(3, "Product3", "Desc3"));
-        products.add(new Products(4, "Product4", "Desc4"));
-        products.add(new Products(5, "Product5", "Desc5"));
-        products.add(new Products(6, "Product6", "Desc6"));
-        products.add(new Products(7, "Product7", "Desc7"));
-        products.add(new Products(8, "Product8", "Desc8"));
-        products.add(new Products(9, "Product9", "Desc9"));
+        products.add(new Products(-1L, "Product1", "Описание", new BigDecimal(100)));
+        products.add(new Products(-1L, "Product2", "Desc2", new BigDecimal(235)));
+        products.add(new Products(-1L, "Product3", "Desc3", new BigDecimal(564)));
+        products.add(new Products(-1L, "Product4", "Desc4", new BigDecimal(5641)));
+        products.add(new Products(-1L, "Product5", "Desc5", new BigDecimal(1200)));
+        products.add(new Products(-1L, "Product6", "Desc6", new BigDecimal(400)));
+        products.add(new Products(-1L, "Product7", "Desc7", new BigDecimal(676)));
+        products.add(new Products(-1L, "Product8", "Desc8", new BigDecimal(150)));
+        products.add(new Products(-1L, "Product9", "Desc9", new BigDecimal(600)));
         req.setAttribute("products", products);
 
         getServletContext().getRequestDispatcher("/WEB-INF/catalog.jsp").include(req, resp);
