@@ -1,19 +1,11 @@
-<%@ page import="ru.kurganov.Products" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: voland
-  Date: 31.03.2020
-  Time: 19:54
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
 <!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<%--<meta charset="utf-8">--%>
+<%--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,8 +15,12 @@
 <head>
     <title>Интернет магазин - Каталог товаров</title>
 </head>
+<jsp:include page="WEB-INF/head.jsp">
+    <jsp:param name="pageHeader" value="Product list"/>
+</jsp:include>
+
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="WEB-INF/header.jsp"/>
 <h2>Каталог товаров</h2>
 <div class="container">
     <div class="row py-2">
@@ -69,23 +65,7 @@
         </div>
     </div>
 </div>
-<%--<h2>Каталог товаров</h2>--%>
-<%--<table border="1">--%>
-<%--    <tr>--%>
-<%--        <th>Id</th>--%>
-<%--        <th>Name</th>--%>
-<%--        <th>Description</th>--%>
-<%--    </tr>--%>
-<%--&lt;%&ndash;    перебераем List и выводим его содержание&ndash;%&gt;--%>
-<%--    <c:forEach items="${products}" var = "prod">--%>
-<%--            <td>${prod.id}</td>--%>
-<%--&lt;%&ndash;        делаем ссылку с передачей параметра name&ndash;%&gt;--%>
-<%--            <c:url value="catalog/product?name=${prod.name}&desc=${prod.description}" var="prodUrl"/>--%>
-<%--            <td>  <a href="${prodUrl}">${prod.name}</a><br></td>--%>
-<%--            <td>${prod.description}</td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-<%--</table>--%>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
