@@ -46,5 +46,16 @@ public class AppListener implements ServletContextListener {
 
     }
 
-
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        ServletContext sc = sce.getServletContext();
+        Connection conn = (Connection) sc.getAttribute("connection");
+        try {
+            if (conn != null && conn.isClosed()) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            logger.error("", e);
+        }
+    }
 }
