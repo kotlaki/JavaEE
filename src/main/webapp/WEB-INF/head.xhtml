@@ -1,14 +1,16 @@
-<%@ page contentType="text/html;charset=utf-8" %>
-<!doctype html>
-<html lang="en">
+
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
     <title>EShop application</title>
 
@@ -25,19 +27,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Главная</a>
+                <h:outputLink value="#{productRepository.ctx.contextPath}/index.xhtml" styleClass="nav-link">Главная</h:outputLink>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/catalog">Каталог товаров</a>
+                <h:outputLink value="#{productRepository.ctx.contextPath}/catalog.xhtml" styleClass="nav-link">Каталог товаров</h:outputLink>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Корзина</a>
+                <h:outputLink value="#{productRepository.ctx.contextPath}/cart.xhtml" styleClass="nav-link">Корзина</h:outputLink>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Оформление заказа</a>
+                <h:outputLink value="#{productRepository.ctx.contextPath}/order.xhtml" styleClass="nav-link">Оформление заказа</h:outputLink>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">О компании</a>
+                <h:outputLink value="#{productRepository.ctx.contextPath}/company.xhtml" styleClass="nav-link">О компании</h:outputLink>
             </li>
         </ul>
     </div>

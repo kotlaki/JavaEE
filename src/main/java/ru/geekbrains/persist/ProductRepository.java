@@ -111,4 +111,8 @@ public class ProductRepository {
                     ");");
         }
     }
+
+    public ServletContext getCtx() {
+        return ctx;
+    }
 }

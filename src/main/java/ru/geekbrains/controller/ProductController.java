@@ -54,4 +54,8 @@ public class ProductController  implements Serializable {
         }
         return "/index.xhtml?faces-redirect=true";
     }
+
+    public String goCart() {
+        return "/cart.xhtml?faces-redirect=true";
+    }
 }
