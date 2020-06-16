@@ -20,6 +20,21 @@
     <param-value>root</param-value>
   </context-param>
 
+  <servlet>
+    <servlet-name>faces-servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>faces-servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+
 <!--  <servlet>-->
 <!--    <servlet-name>ProductServlet</servlet-name>-->
 <!--    <servlet-class>ru.kurganov.servlets.ProductServlet</servlet-class>-->

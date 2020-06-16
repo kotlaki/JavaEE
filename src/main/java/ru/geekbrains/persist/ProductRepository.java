@@ -1,16 +1,50 @@
 package ru.geekbrains.persist;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.ServletContext;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
+@Named
 public class ProductRepository {
 
-    private final Connection conn;
+    private Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
-    public ProductRepository(Connection conn) throws SQLException {
-        this.conn = conn;
-        createTableIfNotExists(conn);
+    @Inject
+    private ServletContext ctx;
+
+    private Connection conn;
+
+    @PostConstruct
+    public void init() {
+        String jdbcConnectionString = ctx.getInitParameter("jdbcConnectionString");
+        String dbUsername = ctx.getInitParameter("dbUsername");
+        String dbPassword = ctx.getInitParameter("dbPassword");
+
+
+        try {
+            conn = DriverManager.getConnection(jdbcConnectionString, dbUsername, dbPassword);
+
+            if (this.findAll().isEmpty()) {
+                this.insert(new Products(-1L, "Product1", "Desc1", new BigDecimal(10)));
+                this.insert(new Products(-1L, "Product2", "Desc2", new BigDecimal(102)));
+                this.insert(new Products(-1L, "Product3", "Desc3", new BigDecimal(1030)));
+                this.insert(new Products(-1L, "Product4", "Desc4", new BigDecimal(140)));
+            }
+            createTableIfNotExists(conn);
+        } catch (SQLException e) {
+            logger.error("", e);
+            throw new RuntimeException(e);
+        }
     }
 
     public void insert(Products product) throws SQLException {
