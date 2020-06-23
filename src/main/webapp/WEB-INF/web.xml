@@ -17,7 +17,7 @@
 
   <context-param>
     <param-name>dbPassword</param-name>
-    <param-value>root</param-value>
+    <param-value>root123</param-value>
   </context-param>
 
   <servlet>

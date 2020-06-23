@@ -32,7 +32,7 @@ public class ProductController  implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public List<Products> getAllProducts() throws SQLException {
+    public List<Products> getAllProducts() {
         return productRepository.findAll();
     }
 
@@ -46,13 +46,13 @@ public class ProductController  implements Serializable {
         return "/index.xhtml?faces-redirect=true";
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct() {
         if(products.getId() == null) {
             productRepository.insert(products);
         } else {
             productRepository.update(products);
         }
-        return "/index.xhtml?faces-redirect=true";
+        return "/catalog.xhtml?faces-redirect=true";
     }
 
     public String goCart() {

@@ -1,15 +1,23 @@
 package ru.geekbrains.persist;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Table (name = "products")
+@Entity
 public class Products {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(length = 4096, nullable = false)
     private String description;
 
+    @Column(nullable = false)
     private BigDecimal price;
 
     public Products() {
