@@ -1,34 +1,30 @@
 package ru.geekbrains.persist;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
-@Table(name = "category")
 @Entity
-public class Category {
+@Table(name = "category")
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false, updatable = true)
     private String name;
 
-    @Column(length = 4096, nullable = false)
+    @Column(name = "description", length = 4096, nullable = false, updatable = true)
     private String description;
 
-    public Category() {
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "category")
+    private List<Products> productsList;
 
-    public Category(Integer id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,5 +42,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Products> getProductsList() {
+        return productsList;
+    }
+
+    public void setProductsList(List<Products> productsList) {
+        this.productsList = productsList;
     }
 }

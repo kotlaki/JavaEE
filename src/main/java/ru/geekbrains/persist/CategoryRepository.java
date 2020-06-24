@@ -3,23 +3,19 @@ package ru.geekbrains.persist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
-import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.List;
 
 @ApplicationScoped
 @Named
-public class ProductRepository {
+public class CategoryRepository {
 
     private Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
@@ -30,29 +26,30 @@ public class ProductRepository {
     private EntityManager em;
 
     @Transactional
-    public void insert(Products product) {
-       em.persist(product);
+    public void insert(Category category) {
+        em.persist(category);
     }
 
     @Transactional
-    public void update(Products product) {
-        em.persist(product);
+    public void update(Category category) {
+        em.persist(category);
     }
 
     @Transactional
     public void delete(long id) throws SQLException {
-        Products product = em.find(Products.class, id);
-        if (product != null) {
-            em.remove(product);
+        Category category = em.find(Category.class, id);
+        if (category != null) {
+            em.remove(category);
         }
     }
 
-    public Products findById(long id) {
-        return em.find(Products.class, id);
+    public Category findById(long id) {
+        return em.find(Category.class, id);
     }
 
-    public List<Products> findAll() {
+    public List<Category> findAll() {
 
-        return em.createQuery("from Products ", Products.class).getResultList();
+        return em.createQuery("from Category ", Category.class).getResultList();
     }
+
 }

@@ -22,11 +22,17 @@
     <div class="row py-2">
         <h:form id="productsForm">
             <div class="col-12">
-                <h:commandButton value="Добавить продукт" styleClass="btn btn-primary" action="#{productController.createProduct()}"></h:commandButton>
+                <h:commandButton value="Добавить категорию" styleClass="btn btn-primary"
+                                 action="#{categoryController.createCategory}"></h:commandButton>
+            </div>
+            <div class="col-12">
+                <h:commandButton value="Добавить продукт" styleClass="btn btn-primary"
+                                 action="#{productController.createProduct()}"></h:commandButton>
             </div>
 
             <div class="col-12">
-                <h:dataTable value="#{productController.allProducts}" var="product" styleClass="table table-bordered my-2">
+                <h:dataTable value="#{productController.allProducts}" var="product"
+                             styleClass="table table-bordered my-2">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
                         #{product.id}
@@ -45,8 +51,10 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Действие</f:facet>
-                        <h:commandButton value="Редактировать" styleClass="btn btn-success" action="#{productController.editProduct(product)}"/>
-                        <h:commandButton value="Удалить" styleClass="btn btn-danger" action="#{productController.deleteProduct(product)}"/>
+                        <h:commandButton value="Редактировать" styleClass="btn btn-success"
+                                         action="#{productController.editProduct(product)}"/>
+                        <h:commandButton value="Удалить" styleClass="btn btn-danger"
+                                         action="#{productController.deleteProduct(product)}"/>
                     </h:column>
                 </h:dataTable>
             </div>
