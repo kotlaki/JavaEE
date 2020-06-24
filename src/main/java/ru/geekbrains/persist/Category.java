@@ -1,5 +1,7 @@
 package ru.geekbrains.persist;
 
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +21,16 @@ public class Category implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "category")
     private List<Products> productsList;
+
+    public Category() {
+    }
+
+    public Category(Long id, String name, String description, List<Products> productsList) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.productsList = productsList;
+    }
 
     public Long getId() {
         return id;
@@ -51,4 +63,10 @@ public class Category implements Serializable {
     public void setProductsList(List<Products> productsList) {
         this.productsList = productsList;
     }
+
+//    @Override
+//    public String toString() {
+//        return String.valueOf(id);
+//    }
+
 }

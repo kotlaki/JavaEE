@@ -22,10 +22,8 @@
     <div class="row py-2">
         <h:form id="productsForm">
             <div class="col-12">
-                <h:commandButton value="Добавить категорию" styleClass="btn btn-primary"
+                <h:commandButton value="Добавить категорию" styleClass="btn btn-success"
                                  action="#{categoryController.createCategory}"></h:commandButton>
-            </div>
-            <div class="col-12">
                 <h:commandButton value="Добавить продукт" styleClass="btn btn-primary"
                                  action="#{productController.createProduct()}"></h:commandButton>
             </div>
@@ -40,6 +38,10 @@
                     <h:column>
                         <f:facet name="header">Имя</f:facet>
                         #{product.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Категория</f:facet>
+                        #{product.category}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Описание</f:facet>

@@ -1,5 +1,6 @@
 package ru.geekbrains.persist;
 
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,9 +16,8 @@ import java.util.List;
 
 @ApplicationScoped
 @Named
-public class CategoryRepository {
-
-    private Logger logger = LoggerFactory.getLogger(CategoryRepository.class);
+public class OrderRepository {
+    private Logger logger = LoggerFactory.getLogger(OrderRepository.class);
 
     @Inject
     private UserTransaction ut;
@@ -26,31 +26,30 @@ public class CategoryRepository {
     private EntityManager em;
 
     @Transactional
-    public void insert(Category category) {
-        em.persist(category);
+    public void insert(Orders orders) {
+        em.persist(orders);
     }
 
     @Transactional
-    public void update(Category category) {
-        em.persist(category);
+    public void update(Orders orders) {
+        em.persist(orders);
     }
 
     @Transactional
     public void delete(long id) throws SQLException {
-        Category category = em.find(Category.class, id);
-        if (category != null) {
-            em.remove(category);
+        Orders orders = em.find(Orders.class, id);
+        if (orders != null) {
+            em.remove(orders);
         }
     }
 
     @Transactional
-    public Category findById(long id) {
-        return em.find(Category.class, id);
+    public Orders findById(long id) {
+        return em.find(Orders.class, id);
     }
 
     @Transactional
-    public List<Category> findAll() {
-        return em.createQuery("from Category ", Category.class).getResultList();
+    public List<Orders> findAll() {
+        return em.createQuery("from Orders ", Orders.class).getResultList();
     }
-
 }

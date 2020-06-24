@@ -83,6 +83,11 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.omnifaces</groupId>
+      <artifactId>omnifaces</artifactId>
+      <version>3.6.1</version>
+    </dependency>
 
   </dependencies>
 

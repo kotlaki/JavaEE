@@ -17,6 +17,57 @@
 </head>
 <body>
 <ui:include src="/WEB-INF/head.xhtml"/>
-<h:head>Оформление заказа</h:head>
+<h:head>Список заказов</h:head>
+<div class="container">
+    <div class="row py-2">
+        <h:form id="ordersForm">
+            <div class="col-12">
+                <h:dataTable value="#{ordersController.allOrders}" var="orders"
+                             styleClass="table table-bordered my-2">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{orders.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Номер заказа</f:facet>
+                        #{orders.numberOrder}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Товар</f:facet>
+                        #{orders.product}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Описание</f:facet>
+                        #{orders.description}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Цена заказа</f:facet>
+                        #{orders.totalPrice}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Действие</f:facet>
+                        <h:commandButton value="Обработать" styleClass="btn btn-success"
+                                         action="#{ordersController.createOrder()}"/>
+                        <h:commandButton value="Редактировать" styleClass="btn btn-success"
+                                         action="#{ordersController.editOrder(orders)}"/>
+                        <h:commandButton value="Удалить" styleClass="btn btn-danger"
+                                         action="#{ordersController.deleteOrder(orders)}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </h:form>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

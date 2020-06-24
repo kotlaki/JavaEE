@@ -30,12 +30,13 @@ public class Products implements Serializable {
     public Products() {
     }
 
-//    public Products(Long id, String name, String description, BigDecimal price) {
-//        this.id = id;
-//        this.name = name;
-//        this.description = description;
-//        this.price = price;
-//    }
+    public Products(Long id, String name, String description, BigDecimal price, Category category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
 
 
     public Long getId() {

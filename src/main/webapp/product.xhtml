@@ -23,6 +23,15 @@
             <h:form id="productForm">
 
                 <div class="form-group">
+                    <h:outputLabel value="Категория товара"/>
+                    <h:selectOneMenu value="#{categoryController.allCategory}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem itemLabel="Выберите категорию" itemValue="#{null}"/>
+                        <f:selectItems value="#{categoryController.allCategory}" var="category"
+                                       itemLabel="#{category.name}" itemValue="#{category.id}"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-group">
                     <h:outputLabel value="Наименование товара"/>
                     <h:inputText styleClass="form-control" id="name" value="#{productController.products.name}" placeholder="Введите название товара"/>
                 </div>
