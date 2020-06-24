@@ -3,6 +3,46 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
   <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>jdbcConnectionString</param-name>
+    <param-value>jdbc:mysql://localhost:3306/javaee_test?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>dbUsername</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>root123</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>faces-servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>faces-servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/errors/404.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/errors/403.jsp</location>
+  </error-page>
+
 </web-app>
