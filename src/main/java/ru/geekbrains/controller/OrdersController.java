@@ -3,6 +3,7 @@ package ru.geekbrains.controller;
 import ru.geekbrains.persist.OrderRepository;
 import ru.geekbrains.persist.Orders;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,7 +14,7 @@ import java.util.List;
 @SessionScoped
 @Named
 public class OrdersController implements Serializable {
-    @Inject
+    @EJB
     private OrderRepository orderRepository;
 
     private Orders orders;

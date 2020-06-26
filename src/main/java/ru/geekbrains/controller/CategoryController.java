@@ -5,6 +5,7 @@ import ru.geekbrains.persist.CategoryRepository;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.Products;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,7 +17,7 @@ import java.util.List;
 @Named
 public class CategoryController implements Serializable {
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
 
     private Category category;

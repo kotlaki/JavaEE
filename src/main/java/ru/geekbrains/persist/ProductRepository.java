@@ -4,22 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.geekbrains.service.ProductDTO;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.List;
 
-@ApplicationScoped
-@Named
+@Stateless
 public class ProductRepository {
 
     private Logger logger = LoggerFactory.getLogger(ProductRepository.class);
@@ -27,17 +20,17 @@ public class ProductRepository {
     @PersistenceContext(unitName = "ds") // смотрим в название юнита в persistence.xml
     private EntityManager em;
 
-    @Transactional
+    @TransactionAttribute
     public void insert(Products product) {
        em.persist(product);
     }
 
-    @Transactional
+    @TransactionAttribute
     public void update(Products product) {
         em.persist(product);
     }
 
-    @Transactional
+    @TransactionAttribute
     public void delete(long id) throws SQLException {
         Products product = em.find(Products.class, id);
         if (product != null) {

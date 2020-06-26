@@ -1,17 +1,18 @@
-//package ru.geekbrains.service;
-//
-//import java.util.List;
-//
-//@Local
-//public interface ProductServiceLocal {
-//
-//    void insert(ProductRepr productRepr);
-//
-//    void update(ProductRepr productRepr);
-//
-//    void delete(long id);
-//
-//    ProductRepr findById(long id);
-//
-//    List<ProductRepr> findAll();
-//}
+package ru.geekbrains.service;
+
+import javax.ejb.Local;
+import java.sql.SQLException;
+import java.util.List;
+
+@Local
+public interface ProductServiceLocal {
+    void insert(ProductDTO productDTO);
+
+    void update(ProductDTO productDTO);
+
+    void delete(long id) throws SQLException;
+
+    ProductDTO findById(long id);
+
+    List<ProductDTO> findAll();
+}

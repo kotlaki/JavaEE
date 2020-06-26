@@ -2,13 +2,12 @@ package ru.geekbrains.controller;
 
 import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.CategoryRepository;
-import ru.geekbrains.persist.Products;
 import ru.geekbrains.service.ProductDTO;
-import ru.geekbrains.service.ProductService;
+import ru.geekbrains.service.ProductServiceLocal;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -18,10 +17,10 @@ import java.util.List;
 @Named
 public class ProductController  implements Serializable {
 
-    @Inject
-    private ProductService productService;
+    @EJB
+    private ProductServiceLocal productServiceLocal;
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
 
     private ProductDTO productDTO;
@@ -38,7 +37,7 @@ public class ProductController  implements Serializable {
 
     // метод выводит список товаров из БД при открытии каталога
     public void preloadProducts(ComponentSystemEvent componentSystemEvent) {
-        this.productDTOList = productService.findAll();
+        this.productDTOList = productServiceLocal.findAll();
     }
 
     public String createProduct() {
@@ -56,15 +55,15 @@ public class ProductController  implements Serializable {
     }
 
     public String deleteProduct(ProductDTO productDTO) throws SQLException {
-        productService.delete(productDTO.getId());
+        productServiceLocal.delete(productDTO.getId());
         return "/catalog.xhtml?faces-redirect=true";
     }
 
     public String saveProduct() {
         if(productDTO.getId() == null) {
-            productService.insert(productDTO);
+            productServiceLocal.insert(productDTO);
         } else {
-            productService.update(productDTO);
+            productServiceLocal.update(productDTO);
         }
         return "/catalog.xhtml?faces-redirect=true";
     }
