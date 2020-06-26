@@ -17,12 +17,13 @@
 <ui:include src="WEB-INF/head.xhtml"/>
 <body>
 
-
+<!--обращаемся к методу который при открытии этой страницы выводит список товаров из БД-->
+<f:event listener="#{productController.preloadProducts}" type="preRenderView"/>
 <div class="container">
     <div class="row py-2">
         <h:form id="productsForm">
             <div class="col-12">
-                <h:commandButton value="Добавить категорию" styleClass="btn btn-success"
+                <h:commandButton value="Категории" styleClass="btn btn-success"
                                  action="#{categoryController.createCategory}"></h:commandButton>
                 <h:commandButton value="Добавить продукт" styleClass="btn btn-primary"
                                  action="#{productController.createProduct()}"></h:commandButton>
@@ -41,7 +42,7 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Категория</f:facet>
-                        #{product.category}
+                        #{product.categoryName}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Описание</f:facet>

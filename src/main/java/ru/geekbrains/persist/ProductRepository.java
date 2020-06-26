@@ -2,6 +2,7 @@ package ru.geekbrains.persist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.geekbrains.service.ProductDTO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -22,9 +23,6 @@ import java.util.List;
 public class ProductRepository {
 
     private Logger logger = LoggerFactory.getLogger(ProductRepository.class);
-
-    @Inject
-    private UserTransaction ut;
 
     @PersistenceContext(unitName = "ds") // смотрим в название юнита в persistence.xml
     private EntityManager em;
@@ -52,7 +50,18 @@ public class ProductRepository {
     }
 
     public List<Products> findAll() {
-
         return em.createQuery("from Products ", Products.class).getResultList();
     }
+
+    public ProductDTO findProductDTOById(long id) {
+        return em.createQuery("select new ru.geekbrains.service.ProductDTO(p.id, p.name, p.description, p.price, p.category.id, p.category.name, p.category.description) from Products p where p.id = :id", ProductDTO.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
+    public List<ProductDTO> findAllProductDTO() {
+        return em.createQuery("select new ru.geekbrains.service.ProductDTO(p.id, p.name, p.description, p.price, p.category.id, p.category.name, p.category.description) from Products p", ProductDTO.class)
+                .getResultList();
+    }
+
 }

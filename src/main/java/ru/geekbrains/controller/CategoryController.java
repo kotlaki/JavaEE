@@ -21,6 +21,7 @@ public class CategoryController implements Serializable {
 
     private Category category;
 
+
     public String createCategory() {
         this.category = new Category();
         return "/category.xhtml?faces-redirect=true";
@@ -37,7 +38,7 @@ public class CategoryController implements Serializable {
 
     public String deleteCategory(Category category) throws SQLException {
         categoryRepository.delete(category.getId());
-        return "/index.xhtml?faces-redirect=true";
+        return "/category.xhtml?faces-redirect=true";
     }
 
     public String saveCategory() {
@@ -46,10 +47,18 @@ public class CategoryController implements Serializable {
         } else {
             categoryRepository.update(category);
         }
-        return "/catalog.xhtml?faces-redirect=true";
+        return "/category.xhtml?faces-redirect=true";
     }
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String newCategory() {
+        return "/new_category.xhtml?faces-redirect=true";
     }
 }

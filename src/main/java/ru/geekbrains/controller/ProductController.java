@@ -2,10 +2,12 @@ package ru.geekbrains.controller;
 
 import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.CategoryRepository;
-import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.Products;
+import ru.geekbrains.service.ProductDTO;
+import ru.geekbrains.service.ProductService;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -17,47 +19,58 @@ import java.util.List;
 public class ProductController  implements Serializable {
 
     @Inject
-    private ProductRepository productRepository;
+    private ProductService productService;
 
-    private Products products;
+    @Inject
+    private CategoryRepository categoryRepository;
 
-    public Products getProducts() {
-        return products;
+    private ProductDTO productDTO;
+
+    private List<ProductDTO> productDTOList;
+
+    public ProductDTO getProductDTO() {
+        return productDTO;
     }
 
-    public void setProducts(Products products) {
-        this.products = products;
+    public void setProductDTO(ProductDTO productDTO) {
+        this.productDTO = productDTO;
+    }
+
+    // метод выводит список товаров из БД при открытии каталога
+    public void preloadProducts(ComponentSystemEvent componentSystemEvent) {
+        this.productDTOList = productService.findAll();
     }
 
     public String createProduct() {
-        this.products = new Products();
+        this.productDTO = new ProductDTO();
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public List<Products> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductDTO> getAllProducts() {
+        return productDTOList;
     }
 
-    public String editProduct(Products product) {
-        this.products = product;
+    public String editProduct(ProductDTO productDTO) {
+        this.productDTO = productDTO;
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public String deleteProduct(Products product) throws SQLException {
-        productRepository.delete(product.getId());
-        return "/index.xhtml?faces-redirect=true";
+    public String deleteProduct(ProductDTO productDTO) throws SQLException {
+        productService.delete(productDTO.getId());
+        return "/catalog.xhtml?faces-redirect=true";
     }
 
     public String saveProduct() {
-        if(products.getId() == null) {
-            productRepository.insert(products);
+        if(productDTO.getId() == null) {
+            productService.insert(productDTO);
         } else {
-            productRepository.update(products);
+            productService.update(productDTO);
         }
         return "/catalog.xhtml?faces-redirect=true";
     }
 
-    public String goCart() {
-        return "/cart.xhtml?faces-redirect=true";
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
     }
+
 }

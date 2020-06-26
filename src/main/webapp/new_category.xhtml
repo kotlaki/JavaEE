@@ -20,39 +20,23 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <h:form id="productForm">
+            <h:form id="categoryForm">
 
                 <div class="form-group">
-                    <h:outputLabel value="Категория товара"/>
-                    <h:selectOneMenu styleClass="form-control" id="productCategory"
-                                     value="#{productController.productDTO.categoryId}">
-                        <f:selectItem itemLabel="Выберите категорию"/>
-                        <f:selectItems value="#{productController.allCategories}" var="category"
-                                       itemLabel="#{category.name}" itemValue="#{category.id}"/>
-                    </h:selectOneMenu>
+                    <h:outputLabel value="Наименование категории"/>
+                    <h:inputText styleClass="form-control" id="name" value="#{categoryController.category.name}"
+                                 placeholder="Введите название категории товара"/>
                 </div>
 
                 <div class="form-group">
-                    <h:outputLabel value="Наименование товара"/>
-                    <h:inputText styleClass="form-control" id="name" value="#{productController.productDTO.name}"
-                                 placeholder="Введите название товара"/>
-                </div>
-
-                <div class="form-group">
-                    <h:outputLabel value="Описание товара"/>
+                    <h:outputLabel value="Описание категории"/>
                     <h:inputText styleClass="form-control" id="description"
-                                 value="#{productController.productDTO.description}"
-                                 placeholder="Введите описание товара"/>
-                </div>
-
-                <div class="form-group">
-                    <h:outputLabel value="Стоимость товара"/>
-                    <h:inputText styleClass="form-control" id="price" value="#{productController.productDTO.price}"
-                                 placeholder="Введите цену товара"/>
+                                 value="#{categoryController.category.description}"
+                                 placeholder="Введите описание категории товара"/>
                 </div>
 
                 <h:commandButton value="Сохранить" styleClass="btn btn-primary"
-                                 action="#{productController.saveProduct()}"/>
+                                 action="#{categoryController.saveCategory}"/>
                 <h:commandButton value="Отмена" styleClass="btn btn-danger"
                                  action="catalog"/>
             </h:form>
