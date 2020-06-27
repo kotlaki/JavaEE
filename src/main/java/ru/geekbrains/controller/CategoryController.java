@@ -4,6 +4,9 @@ import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.CategoryRepository;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.Products;
+import ru.geekbrains.service.CategoryDTO;
+import ru.geekbrains.service.CategoryServiceLocal;
+import ru.geekbrains.service.ProductDTO;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -18,48 +21,52 @@ import java.util.List;
 public class CategoryController implements Serializable {
 
     @EJB
-    private CategoryRepository categoryRepository;
+    private CategoryServiceLocal categoryServiceLocal;
 
-    private Category category;
+//    @EJB
+//    private CategoryRepository categoryRepository;
 
+    private CategoryDTO categoryDTO;
+
+    private List<CategoryDTO> categoryDTOList;
 
     public String createCategory() {
-        this.category = new Category();
+        this.categoryDTO = new CategoryDTO();
         return "/category.xhtml?faces-redirect=true";
     }
 
-    public List<Category> getAllCategory() {
-        return categoryRepository.findAll();
+    public List<CategoryDTO> getAllCategory() {
+        return categoryDTOList;
     }
 
-    public String editCategory(Category category) {
-        this.category = category;
+    public String editCategory(CategoryDTO categoryDTO) {
+        this.categoryDTO = categoryDTO;
         return "/category.xhtml?faces-redirect=true";
     }
 
-    public String deleteCategory(Category category) throws SQLException {
-        categoryRepository.delete(category.getId());
+    public String deleteCategory(CategoryDTO categoryDTO) throws SQLException {
+        categoryServiceLocal.delete(categoryDTO.getId());
         return "/category.xhtml?faces-redirect=true";
     }
 
     public String saveCategory() {
-        if(category.getId() == null) {
-            categoryRepository.insert(category);
+        if(categoryDTO.getId() == null) {
+            categoryServiceLocal.insert(categoryDTO);
         } else {
-            categoryRepository.update(category);
+            categoryServiceLocal.update(categoryDTO);
         }
         return "/category.xhtml?faces-redirect=true";
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public String newCategory() {
         return "/new_category.xhtml?faces-redirect=true";
+    }
+
+    public CategoryDTO getCategoryDTO() {
+        return categoryDTO;
+    }
+
+    public void setCategoryDTO(CategoryDTO categoryDTO) {
+        this.categoryDTO = categoryDTO;
     }
 }

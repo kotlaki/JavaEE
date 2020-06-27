@@ -2,6 +2,7 @@ package ru.geekbrains.persist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.geekbrains.service.CategoryDTO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
