@@ -54,6 +54,8 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Действие</f:facet>
+                        <h:commandButton value="Добавить в корзину" styleClass="btn btn-primary"
+                                         action="#{cartController.add(product)}"/>
                         <h:commandButton value="Редактировать" styleClass="btn btn-success"
                                          action="#{productController.editProduct(product)}"/>
                         <h:commandButton value="Удалить" styleClass="btn btn-danger"
