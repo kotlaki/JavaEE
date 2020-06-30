@@ -38,13 +38,11 @@
                 <f:facet name="header">Цена</f:facet>
                 #{product.price}
             </h:column>
-            <!--        <h:column>-->
-            <!--            <f:facet name="header">Действие</f:facet>-->
-            <!--            <h:commandButton value="Редактировать" styleClass="btn btn-success"-->
-            <!--                             action="#{categoryController.editCategory(category)}"/>-->
-            <!--            <h:commandButton value="Удалить" styleClass="btn btn-danger"-->
-            <!--                             action="#{categoryController.deleteCategory(category)}"/>-->
-            <!--        </h:column>-->
+                    <h:column>
+                        <f:facet name="header">Действие</f:facet>
+                        <h:commandButton value="Удалить" styleClass="btn btn-danger"
+                                         action="#{cartController.delete(product)}"/>
+                    </h:column>
         </h:dataTable>
     </div>
 </h:form>

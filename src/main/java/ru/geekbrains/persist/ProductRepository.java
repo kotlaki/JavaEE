@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.sql.*;
 import java.util.List;
 
@@ -56,5 +55,11 @@ public class ProductRepository {
         return em.createQuery("select new ru.geekbrains.service.ProductDTO(p.id, p.name, p.description, p.price, p.category.id, p.category.name, p.category.description) from Products p", ProductDTO.class)
                 .getResultList();
     }
+
+//    public List<ProductDTO> findAllProductDTOByCategory(long id) {
+//        return em.createQuery("select new ru.geekbrains.service.ProductDTO(p.id, p.name, p.description, p.price, p.category.id, p.category.name, p.category.description) from Products p where p.category.id = :categoryId", ProductDTO.class)
+//                .setParameter("categoryId", id)
+//                .getResultList();
+//    }
 
 }

@@ -3,7 +3,6 @@ package ru.geekbrains.service;
 import ru.geekbrains.persist.Category;
 
 import javax.ejb.Local;
-import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 

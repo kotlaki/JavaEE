@@ -53,4 +53,11 @@ public class ProductServiceImpl implements ProductServiceLocal {
     public List<ProductDTO> findAll() {
         return productRepository.findAllProductDTO();
     }
+
+//    @Override
+//    @Transactional
+//    public List<ProductDTO> findAllProductDTOByCategory(long categoryId) {
+//        return productRepository.findAllProductDTOByCategory(categoryId);
+//    }
+
 }

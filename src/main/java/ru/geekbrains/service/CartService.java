@@ -17,4 +17,8 @@ public class CartService implements Serializable {
         cart.add(productDTO);
     }
 
+    public void delete(ProductDTO productDTO) {
+        cart.remove(productDTO);
+    }
+
 }

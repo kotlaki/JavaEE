@@ -15,4 +15,6 @@ public interface ProductServiceLocal {
     ProductDTO findById(long id);
 
     List<ProductDTO> findAll();
+
+//    List<ProductDTO> findAllProductDTOByCategory(long categoryId);
 }

@@ -1,7 +1,5 @@
 package ru.geekbrains.persist;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

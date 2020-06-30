@@ -25,6 +25,8 @@ public class ProductController  implements Serializable {
 
     private ProductDTO productDTO;
 
+    private Category test;
+
     private List<ProductDTO> productDTOList;
 
     public ProductDTO getProductDTO() {
@@ -48,6 +50,11 @@ public class ProductController  implements Serializable {
     public List<ProductDTO> getAllProducts() {
         return productDTOList;
     }
+
+//    public List<ProductDTO> getProductsByCategory(long categoryId) {
+//        this.productDTOList = productServiceLocal.findAllProductDTOByCategory(categoryId);
+//        return productDTOList;
+//    }
 
     public String editProduct(ProductDTO productDTO) {
         this.productDTO = productDTO;

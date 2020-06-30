@@ -1,16 +1,10 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.persist.Category;
-import ru.geekbrains.persist.CategoryRepository;
-import ru.geekbrains.persist.ProductRepository;
-import ru.geekbrains.persist.Products;
 import ru.geekbrains.service.CategoryDTO;
 import ru.geekbrains.service.CategoryServiceLocal;
-import ru.geekbrains.service.ProductDTO;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.SQLException;

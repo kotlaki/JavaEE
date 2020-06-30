@@ -29,6 +29,21 @@
                                  action="#{productController.createProduct()}"></h:commandButton>
             </div>
 
+            <div>
+                <h:outputLabel value=""/>
+            </div>
+
+            <div>
+                <h:outputLabel value="Категория товара"/>
+                <h:selectOneMenu id="productCategory">
+<!--                                 value="#{productController.productDTO.categoryId}">-->
+                    <f:selectItem itemLabel="Выберите категорию"/>
+                    <f:selectItems value="#{productController.allCategories}" var="category"
+                                   itemLabel="#{category.name}" itemValue="#{category.id}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Выбрать" styleClass="btn btn-warning" action="order"/>
+            </div>
+
             <div class="col-12">
                 <h:dataTable value="#{productController.allProducts}" var="product"
                              styleClass="table table-bordered my-2">
