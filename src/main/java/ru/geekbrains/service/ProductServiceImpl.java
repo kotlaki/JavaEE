@@ -4,6 +4,7 @@ import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.CategoryRepository;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.Products;
+import ru.geekbrains.rest.ProductRestService;
 import ru.geekbrains.ws.IProduct;
 
 import javax.ejb.Stateless;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Stateless
 @WebService(endpointInterface = "ru.geekbrains.ws.IProduct", serviceName = "IProduct")
-public class ProductServiceImpl implements ProductServiceLocal, IProduct {
+public class ProductServiceImpl implements ProductServiceLocal, IProduct, ProductRestService {
 
     @Inject
     private ProductRepository productRepository;
