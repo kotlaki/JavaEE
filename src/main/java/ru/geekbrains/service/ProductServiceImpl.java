@@ -4,17 +4,21 @@ import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.CategoryRepository;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.Products;
+import ru.geekbrains.ws.IProduct;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // этот клас для связи представлений Product и Category
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal {
+@WebService(endpointInterface = "ru.geekbrains.ws.IProduct", serviceName = "IProduct")
+public class ProductServiceImpl implements ProductServiceLocal, IProduct {
 
     @Inject
     private ProductRepository productRepository;
@@ -60,4 +64,17 @@ public class ProductServiceImpl implements ProductServiceLocal {
 //        return productRepository.findAllProductDTOByCategory(categoryId);
 //    }
 
+
+    public ProductRepository getProductRepository() {
+        return productRepository;
+    }
+
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    @Override
+    public List<ProductServiceWs> getProduct() {
+        return productRepository.findAllProductDTO().stream().map(ProductServiceWs::new).collect(Collectors.toList());
+    }
 }
